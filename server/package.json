@@ -1,0 +1,28 @@
+{
+    "name": "shakib-third-year-project-server",
+    "main": "server.js",
+    "version": "0.0.1",
+    "author": {
+        "name": "Shakib-Bin Hamid",
+        "email": "sh3g12@soton.ac.uk"
+    },
+    "dependencies": {
+        "bcrypt-nodejs": "0.0.3",
+        "body-parser": "^1.14.1",
+        "express": "^4.13.3",
+        "mongoose": "^4.2.0",
+        "passport": "^0.2.0",
+        "passport-http": "^0.2.2",
+        "node-gcm": "^0.13.0",
+        "mongoose-deep-populate": "^2.0.3"
+    },
+    "devDependencies": {
+        "should": "^8.0.2",
+        "supertest": "^1.1.0",
+        "mocha": "^2.3.4"
+    },
+    "scripts": {
+        "test": "make test",
+        "start": "node server.js"
+    }
+}

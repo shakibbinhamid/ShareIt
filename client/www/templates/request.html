@@ -1,0 +1,111 @@
+<!-- |*****************************************************************************|
+     | Client : templates/request.html                                             |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the detailed request by a user about a product.                     |
+     |*****************************************************************************| -->
+
+
+<div class="row">
+    <!-- picture and username of the requester. clicks to the profile -->
+    <a class="col col-20"
+       style="text-decoration: none;"
+       href="#/app/profile/{{offer._from.username}}">
+        <img src="{{ offer._from.avatar }}"
+             style="border-radius: 5px; max-height: 60px; max-width: 60px; background: #EEEEEE">
+        <div style="text-align:center">{{ offer._from.username }}</div>
+    </a>
+    <!-- the details of the offer -->
+    <div class="col col-80"
+         style="text-decoration: none;">
+        <div ng-if="offer.createdAt">
+             <!-- rating of the requester -->
+            <rating ng-model="offer._from.rating.average"
+                    max="5"
+                    readonly=true>
+            </rating>
+            <!-- whether it has been declined once -->
+            <span ng-style = "offer.accepted ? {'color' : 'green'} : {'color' : 'black'}"
+                  style="padding-left: 10px">{{ viewDate(offer.createdAt) }}
+                <span ng-if = "offer.accepted">
+                    <i class="icon ion-checkmark-circled balanced"></i>
+                </span>
+                <span ng-if = "!offer.accepted && offer.declined">
+                    <i class="icon ion-close-round assertive"></i>
+                </span>
+            </span>
+        </div>
+        <!-- what the offer is and why -->
+        <div style="padding-left: 10px">
+            <span ng-if="offer._borrow">
+                wants to borrow
+            </span>
+            <span ng-if="offer._buy">
+                wants to buy
+            </span>
+            <!-- name and link to the product in question -->
+            <span ng-if = "state.$current.name === 'app.product'">{{ product.name }}</span>
+            <a class="button-clear button-small"
+               ng-if = "state.$current.name !== 'app.product' && offer._borrow"
+               href="#/app/products/{{offer._borrow._thing._id}}"
+               style="color:#3366ff">
+               {{ offer._borrow._thing.name }}
+            </a>
+            <a class="button-clear button-small"
+               ng-if = "state.$current.name !== 'app.product' && offer._buy"
+               href="#/app/products/{{offer._buy._thing._id}}"
+               style="color:#3366ff">
+                {{ offer._buy._thing.name }}
+            </a>
+            <!-- reason to borrow -->
+            <span ng-if="offer.reason">
+                because <i>{{ offer.reason }}</i>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="button-bar">
+    <!-- buttons for the product page -->
+    <button class="button button-small button-clear button-balanced"
+            ng-if="state.$current.name === 'app.product'"
+            ng-click="acceptOffer(offer)"
+            ng-disabled="product.closed || offer.accepted || product._reservedTo">
+            Accept
+    </button>
+    <button class="button button-small button-clear button-assertive"
+            ng-if="state.$current.name === 'app.product'"
+            ng-click="declineOffer(offer)"
+            ng-disabled="product.closed || offer.declined">
+            Decline
+    </button>
+    <button class="button button-small button-clear button-positive"
+            ng-if="state.$current.name === 'app.product'"
+            ng-click="completeOffer(offer)"
+            ng-disabled="product.closed || !offer.accepted || !product._reservedTo">
+            Complete
+    </button>
+
+    <!-- same buttons for other pages -->
+    <button class="button button-small button-clear button-balanced"
+            ng-if="state.$current.name === 'app.requests'"
+            ng-click="acceptOffer(offer)"
+            ng-disabled="offer._borrow._thing.closed || offer._buy._thing.closed || offer.accepted || offer._borrow._thing._reservedTo || offer._buy._thing._reservedTo">
+            Accept
+    </button>
+    <button class="button button-small button-clear button-assertive"
+            ng-if="state.$current.name === 'app.requests'"
+            ng-click="declineOffer(offer)"
+            ng-disabled="offer._borrow._thing.closed || offer._buy._thing.closed || offer.declined">
+            Decline
+    </button>
+    <button class="button button-small button-clear button-positive"
+            ng-if="state.$current.name === 'app.requests'"
+            g-click="completeOffer(offer)"
+            ng-disabled="offer._borrow._thing.closed || offer._buy._thing.closed || !offer.accepted">
+            Complete
+    </button>
+</div>

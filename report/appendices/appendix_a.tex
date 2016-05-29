@@ -1,0 +1,87 @@
+\chapter{Read Me}
+
+This project was done using a Macbook Air Mid 2012 with Mac OS X 10.11 El Capitan. So, the following guide is confirmed to work on such a system.\\
+
+However, it should work without any changes on a recent Unix based system and with slight changes on Windows. The framework websites provide more knowledge on platform specific issues.\\
+
+The following sections must be completed in order.
+
+\section{Install Node.JS}
+
+First install the \texttt{node.js} runtime from \texttt{\hyperref[https://nodejs.org/en/]{https://nodejs.org/en/}}. This will also install the package manager \texttt{npm}. On the development system it was \texttt{0.12.7}.\\
+
+You can update existing versions using \texttt{sudo npm install npm -g}. Also, check the current version using \texttt{node --version}.
+
+\section{Install Express.JS}
+
+Use \texttt{sudo npm install -g express}. The \texttt{-g} option installs the package globally. This is necessary to start the server locally.
+
+\section{Add Database}
+
+This project only used a remote database on mLab at \texttt{\hyperref[https://mlab.com]{https://mlab.com}}. Create a free account here, add a database, add a \textit{db user} and take note of the username-password. On mLab, over at your database page, you should see the \textit{db URI}. Fill in the username-password and overwrite \texttt{server.js} and \texttt{test/config-debug.js} at the Server project root.
+
+\section{Install Heroku Toolbelt}
+
+If you are using Heroku, as was used in this project, then you must install the Heroku Toolbelt from \texttt{\hyperref[https://toolbelt.heroku.com]{https://toolbelt.heroku.com}}.
+
+\section{Heroku Deploy}
+
+Once you have created a Heroku account (free), \texttt{cd} over to the \textit{Server} project root. Then use \texttt{heroku login} to log into your account from CLI. The server \textit{must} be a \textit{git} repository. If it is not, use \texttt{git init} to create one.\\
+
+Use \texttt{heroku create <app-name>} where \texttt{<app-name>} is what you want to call your server. This will add a \textit{Heroku git remote}.\\
+
+Finally, use \texttt{git push heroku master} to push the \texttt{master} branch to Heroku. It will now be deployed to \texttt{<app-name>.herokuapp.com}.\\
+
+You can use \texttt{heroku logs --tail} to see real-time logs from your remote server.
+
+\section{Server local}
+
+Use \texttt{npm install} while in the Server project root. It will install all the modules (including dev-dependencies) from \texttt{package.json}.\\
+
+Finally, use \texttt{node server.js} to run the server. You should install \textit{nodemon} by \texttt{sudo npm install -g nodemon} to automatically restart the server on code change.
+
+\section{Install Ionic \& Cordova}
+
+Use \texttt{sudo npm install -g cordova ionic} to install both Ionic and Cordova CLI.\\
+
+It is recommended that you use \texttt{Google Chrome} as your \textit{default} browser.
+
+\section{Add Platforms to Ionic Project}
+
+Apart from \textit{Android}, which should already be added to the project in the source code provided, you can add other platforms. For example, to add iOS, use \texttt{ionic platform add ios}.\\
+
+You \textit{must} install Android Studio from \texttt{\hyperref[http://developer.android.com/sdk/index.html]{http://developer.android.com\\/sdk/index.html}} to build for Android and XCode from\\ \texttt{\hyperref[https://developer.apple.com/xcode/download/]{https://developer.apple.com/xcode/download/}} to build for iOS.
+
+\section{Install Plugins \& Ionic Libraries}
+
+To add plugins for a platform, first add the platform, then use \texttt{ionic plugin add <plugin>}. Replace \texttt{<plugin>} with cordova-plugin-device, cordova-plugin-console, cordova-plugin-whitelist, cordova-plugin-splashscreen, cordova-plugin-statusbar, ionic-plugin-keyboard, com-badrit-base64, cordova-imagePicker.git, cordova-plugin-file. Use these \textit{one by one}.\\
+
+Some might already be installed depending on your Ionic version. If they are, just ignore and carry on.\\
+
+You can also perform \texttt{ionic state reset} to re-download all the plugins from \texttt{package.json} file of your Ionic project.
+
+\section{Add GCM API Key}
+
+Create a Google account, go to \texttt{\hyperref[https://console.developers.google.com]{https://console.developers.google.com}}, create a project. Add \textit{GCM} as an API, create a \textit{Server Key} and take note of it.\\
+
+Then update \texttt{controllers/offer.js} and add your GCM API key.
+
+\section{Set up Ionic Push}
+
+Push is not supplied as a standard with Ionic. Create an Ionic account. Look at \texttt{\hyperref[http://docs.ionic.io/v1.0/docs/push-android-setup]{http://docs.ionic.io/v1.0/docs/push-android-setup}} for GCM integration in Ionic.\\
+
+In essence, use \texttt{ionic add ionic-platform-web-client} on the Client project root. Then \texttt{ionic push --google-api-key <your-google-api-key>} and \texttt{ionic config set gcm\_key}\\ \texttt{<your-gcm-project-number>}. Head over to \texttt{\hyperref[http://apps.ionic.io]{http://apps.ionic.io}}, log in using your ionic account and you will see your push service connected with your app.
+
+\section{Change Host id in Client}
+
+Open up \texttt{<clinet-project-root>/www/js/services.js} and change \texttt{routes.APP} to your server app address. You can also toggle \texttt{development} to access either the local server or the remote one.
+
+\section{App Build}
+
+\texttt{cd} to Client project root. Set \texttt{development} is set to \texttt{false} in \texttt{services.js}. Once you have added the desired platform and plugins (and platform SDK), use \texttt{ionic build <platform>} to build an installer for the platform.\\
+
+For android, a \texttt{android-debug.apk} file will be created at \texttt{/platforms/\\android/build/outputs/apk/}. Transfer the file over to the mobile and install it.
+
+\section{App local}
+
+Disable web-security to allow cross origin policies in chrome. Look online for you platform specific instruction. Otherwise, your app cannot receive data in browser emulation. At Client project root, use \texttt{ionic serve -l} to deploy both iOS and Android emulation.

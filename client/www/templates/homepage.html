@@ -1,0 +1,55 @@
+<!-- |*****************************************************************************|
+     | Client : templates/homepage.html                                            |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the homepage.                                                       |
+     | Currently this is a list of products on cards.                              |
+     |*****************************************************************************| -->
+
+
+<ion-view view-title="Products">
+    <ion-content class = "home">
+        <!-- The pull to refresh code -->
+        <ion-refresher pulling-text="Pull to refresh..."
+                       on-refresh="doRefresh()"
+                       spinner = "ripple">
+        </ion-refresher>
+        <!-- the top search bar -->
+        <ng-include src="'templates/product-search.html'"></ng-include>
+        <!-- The list of products in cards -->
+        <ion-list class="card"
+                  ng-if="!search.name"
+                  ng-repeat="product in products | orderBy: ['closed', '-createdAt']"
+                  style="background: #FFEECB;">
+            <ng-include src="'templates/product-list.html'"></ng-include>
+        </ion-list>
+        <!-- The list of search results products -->
+        <ion-list class="card"
+                  ng-if="search.name"
+                  ng-repeat="product in searchResults"
+                  style="background: #eeeeee;">
+            <ng-include src="'templates/product-list.html'"></ng-include>
+        </ion-list>
+        <!-- No search results found message -->
+        <ion-list class="card"
+                  ng-if="search.name && search.noResultsFound"
+                  style="background: #eeeeee;">
+            <ion-item>
+                <p>No Results Found ! Try a different phrase?</p>
+                <button class="button button-block button-assertive"
+                        ng-click="search.name = ''; search.noResultsFound = false;">
+                        Go Back
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+    <!-- The new product button. -->
+    <button class="button button-fab button-fab-bottom-right button-energized-900 pane icon ion-android-add" nav-view="active" style="transform: translate3d(0%, 0px, 0px);" ng-click="openNewProductModal()"></button>
+
+    <!--    <ion-infinite-scroll ng-if="isNewProductAvailable()" icon="ion-loading-c" on-infinite="loadNextNMoreProducts(10)" distance="5%"></ion-infinite-scroll>-->
+
+</ion-view>

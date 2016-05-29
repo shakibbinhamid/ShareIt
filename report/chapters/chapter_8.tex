@@ -1,0 +1,37 @@
+\chapter{Evaluation \& Future Work}
+
+In this chapter, I discuss how well the project went, which parts can be improved upon, what is left to complete as well as how others can use the results of the project in their own work.
+
+\section{Project Success}
+
+The selection of technologies proved to be very satisfactory. Interaction between the client and the server using JSON was made seamless due to full stack JavaScript development. The frameworks' community support was generally helpful, albeit their own rapid development made version specific support tedious. It was very easy to add new modules and libraries using \texttt{npm} and access mobile hardware plugin support by Ionic. Overall, fast prototyping was possible using the frameworks, as expected.\\
+
+I believe that running the user interviews was a great success. I now have practical knowledge of how to prepare for such sessions, the methodology of interviews and observations and most importantly, interpreting the results. As found in the literature, it is extremely important to evaluate a prototype often; in my opinion - at least once every two sprints. This removes tunnel vision, sets realistic goals and prioritises the remaining work or bugs.\\
+
+The server has been sufficiently tested with automated test suits, as discussed in Chapter \ref{chap:test} and the client was tested by scenerios and user interviews. This is satisfactory for a prototyping project within these time constraints.\\
+
+Finally, the project organisation was a success. Development started early and finished a little over a week earlier than planned. Sprints were regularly reviewed, backlog was managed throughout the development period and bugs were documented. I believe that the app has reached an alpha stage, where there are a number of bugs and a few features are missing, but it is ready to be field tested and will reach feature-lock and beta in 3-4 iterations. 
+
+\section{Points of Improvement}
+
+The server was not satisfactorily \textit{unit} tested, while the Ionic framework provides none to very little support in automated testing in general. If this were to be a production ready service, I would, at least, rebuild the server in TDD style.\\
+
+Push notification support is poor in \textit{every} hybrid app framework. The current choice of libraries is quite helpful, but will likely require some rewriting themselves to suit this app's needs. There needs to be a better guarantee of the delivery of the notifications.\\
+
+Data models can be made simpler in the server. For example: Lend and Sell objects can be integrated in Thing, PushToken should be absorbed in User etc. This structure was chosen at first to prevent certain fields to be retrieved. In fact, later I discovered that the \texttt{mongoose} library natively provides methods that perform the intended behaviour. So, it is no longer necessary to separate the objects.\\
+
+Finally, as a production-ready app, a paid Amazon S3 database should be chosen and integrated with the server to store images as BLOBs, rather than Base64 strings. This removes a large overhead from the main database.
+
+\section{Future Development}
+
+The app must have an improved rating system for the users, for example: there should be sub-ratings, e.g. timeliness, care-of-product etc. This project focused on the overall app, but a production-ready community driven app will heavily depend on a detailed and reliable rating system. In fact, some user research may be performed about how such a system may work before development.\\
+
+Next, the in-app communication should be implemented. This could be done using the university email service, regular chatting frameworks, sms-call systems etc.\\
+
+Finally, the app should have an automated recommendation notification system for desired items (wish-list) for the users. This feature should not require any additional frameworks, but such \textit{recommendation} system is usually difficult to get \textit{right}. Research should also be done on how similar systems handle the UX on client, e.g. Amazon or EBay.
+
+\section{Usefulness in Other Projects}
+
+The client app structure, feature list and server models can provide a useful framework for software projects that have community driven interaction models, e-commerce etc. They can also use the project plan or sprint times from the Gantt chart. Hopefully, it will also convince mobile app developers to invest resources in user interaction sessions.\\
+
+This project has used technologies from various paradigms which can influence other projects. For example: student projects with asynchronous servers can get guidelines from the nodejs code, RESTful api developers can benefit from the relevant parts in server, app developers can also benefit enormously from the ionic project structure etc.

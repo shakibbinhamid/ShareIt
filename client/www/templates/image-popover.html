@@ -1,0 +1,23 @@
+<!-- |*****************************************************************************|
+     | Client : templates/image-popover.html                                       |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the modal that shows up when an image is clicked on a slider        |
+     |*****************************************************************************| -->
+
+
+<div class="modal image-modal transparent"
+     ng-click="closeImageModal()">
+    <!-- the slider -->
+    <ion-slide-box on-slide-changed="slideChanged(index)"
+                   show-pager="true"
+                   active-slide="activeSlide">
+        <ion-slide ng-repeat="image in allImages">
+            <img ng-src="{{image}}"
+                 class="fullscreen-image"/>
+        </ion-slide>
+    </ion-slide-box>
+</div>

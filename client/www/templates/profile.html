@@ -1,0 +1,77 @@
+<!-- |*****************************************************************************|
+     | Client : templates/profile.html                                             |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the user profile page                                               |
+     |*****************************************************************************| -->
+
+
+<ion-view view-title="Profile">
+    <ion-content class = "profile">
+        <!-- profile header with username, rating, avatar -->
+        <div id="profile-info">
+            <div class = "row">
+                <!-- avatar -->
+                <div class = "col col-33">
+                    <img id="profile-image"
+                         ng-src="{{user.avatar}}">
+                </div>
+                <!-- name and rating -->
+                <div class = "col col-67">
+                    <h3 id="profile-name">{{user.username}}</h3>
+                    <h3 id="rating-count">{{user.rating.count}} ratings</h3>
+                    <a ng-click="rateUsr()">
+                        <rating ng-model="user.rating.average"
+                                max="5"
+                                readonly=true>
+                        </rating>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- list of owned products -->
+        <label class="royal"
+               style="padding-left: 5%">
+               <strong> {{user.username}}'s Products</strong>
+        </label>
+        <ion-list>
+            <ion-item href="#/app/products/{{product._id}}"
+                      ng-repeat="product in products | orderBy: ['closed', '-createdAt']"
+                      class="item-avatar">
+                <!-- the first image of the product -->
+                <img src="{{ product.pictures[0] }}"
+                     ng-if="product.pictures.length > 0">
+                <!-- default image if one not available -->
+                <img src="https://terryshoemaker.files.wordpress.com/2013/03/placeholder1.jpg"
+                     ng-if="product.pictures.length === 0">
+                <h2>{{ product.name }}</h2>
+                <!-- the tag for closed products -->
+                <span class="badge badge-assertive"
+                      ng-if = "product.closed">
+                      closed
+                </span>
+                <p>{{ product.desc }}</p>
+                <!-- the slide in options -->
+                <ion-option-button class="button icon button-assertive button-clear ion-android-delete"
+                                   ng-click="deleteProduct(product._id)"
+                                   ng-if="user.username === loggedUsername">
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+        <!-- comments about the user -->
+        <label class="royal"
+               style="padding-left: 5%"
+               ng-if="user.rating.comments.length > 0">
+               <strong>Comments about {{user.username}}</strong>
+        </label>
+        <ion-list>
+            <ion-item class = "item-text-wrap"
+                      ng-repeat="comment in user.rating.comments">
+                <i><b>"</b>{{comment}}<b>"</b></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

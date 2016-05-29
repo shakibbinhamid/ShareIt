@@ -1,0 +1,39 @@
+<!-- |*****************************************************************************|
+     | Client : templates/search.html                                              |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the search bar                                                      |
+     |*****************************************************************************| -->
+
+
+<div class="list">
+    <form name="sr" ng-submit="makeSearch()">
+        <div class="item item-input search-input">
+            <label class="item-input-wrapper">
+                <!-- the search icon -->
+                <i class="icon ion-ios-search placeholder-icon field-icon"></i>
+                <!-- the search bar -->
+                <input type="search"
+                       style="width: 100%"
+                       placeholder="Type words to search"
+                       ng-model="search.name"
+                       ng-required="true"
+                       ng-model-options="{updateOn:'default blur',debounce:{default:500,blur:0}}">
+                <!-- the cross when something is written -->
+                <a ng-if="search.name.length"
+                   on-tap="search.name = ''; search.noResultsFound = false;"
+                   class="icon ion-android-close">
+                </a>
+            </label>
+            <!-- search button -->
+            <button type="submit"
+                    class="button button-small"
+                    ng-disabled="sr.$invalid">
+                    OK
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+<!-- |*****************************************************************************|
+     | Client : templates/login.html                                               |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the login page                                                      |
+     |*****************************************************************************| -->
+
+
+<ion-view view-title="Login"
+          align-title="left">
+    <ion-content style="background: url('img/login-background.jpg') center; background-size: cover;">
+        <!-- the app name -->
+        <div class="hero no-header flat">
+            <div class="content">
+                <h1>Share It</h1>
+            </div>
+        </div>
+        <!-- login form -->
+        <form name="auth" ng-submit="login()">
+            <div class="list" style="padding-right: 6%;">
+                <!-- username field -->
+                <ion-md-input placeholder="Username"
+                              highlight-color="balanced"
+                              type="text"
+                              ng-model="loginData.username"
+                              ng-required="true">
+                </ion-md-input>
+                <!-- password field -->
+                <ion-md-input placeholder="Password"
+                              highlight-color="energized"
+                              type="password"
+                              ng-model="loginData.password"
+                              ng-required="true">
+                </ion-md-input>
+            </div>
+            <!-- login button -->
+            <div class="padding">
+                <button class="button button-full button-assertive ink"
+                        type="submit"
+                        ng-disabled="auth.$invalid">
+                        Login
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,75 @@
+<!-- |*****************************************************************************|
+     | Client : templates/categories.html                                          |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the category selection page                                         |
+     |*****************************************************************************| -->
+
+
+<ion-view view-title="Categories">
+    <!-- list of categories -->
+    <ion-content class = "home">
+        <div class="row">
+            <div class="col col-50">
+                <button class="button button-block"
+                        ng-click="getProductsForCategory('book')">
+                        Book
+                </button>
+            </div>
+            <div class="col col-t0">
+                <button class="button button-block"
+                        ng-click="getProductsForCategory('laptop')">
+                        Laptop
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-50">
+                <button class="button button-block"
+                        ng-click="getProductsForCategory('mobile')">
+                        Mobile
+                </button>
+            </div>
+            <div class="col col-50">
+                <button class="button button-block"
+                        ng-click="getProductsForCategory('stationery')">
+                        Stationery
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-50">
+                <button class="button button-block"
+                        ng-click="getProductsForCategory('kitchen')">
+                        Kitchen
+                </button>
+            </div>
+            <div class="col col-50">
+                <button class="button button-block"
+                        ng-click="getProductsForCategory('others')">
+                        Others
+                </button>
+            </div>
+        </div>
+        <!-- results from the category selection -->
+        <label id="categoryResult"
+               ng-if="selected.category.length > 0"><b>Results for "{{selected.category}}"<b>
+        </label>
+        <ion-list class="card"
+                  ng-repeat="product in products | orderBy: ['closed', '-createdAt']"
+                  style="background: #FFEECB;">
+            <ng-include src="'templates/product-list.html'"></ng-include>
+        </ion-list>
+        <!-- no results found message -->
+        <ion-list class="card"
+                  ng-if="selected.category.length > 0 && products.length === 0"
+                  style="background: #eeeeee;">
+            <ion-item>
+                <p>No Results Found ! Try a different category?</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

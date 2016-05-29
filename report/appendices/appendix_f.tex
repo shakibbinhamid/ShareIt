@@ -1,0 +1,444 @@
+\chapter{GUI Testing}
+\label{appendix:gui-test}
+
+\normalsize
+Table \ref{table:gui-test1}, \ref{table:table:gui-test2}, \ref{table:table:gui-test3}, \ref{table:table:gui-test4} and \ref{table:table:gui-test5} contains a comprehensive list of the GUI tests that were performed by the end of development. It accounts for the expected behaviour, resultant behaviour and the possible bug in the system.
+
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.3\hsize}X}
+
+\small
+\begin{sidewaystable}
+\centering
+    \begin{tabularx}{\textwidth}{cbbbcb}
+    \toprule
+    \centering
+    \emph{\textbf{\#}} & \emph{\textbf{Scene}} & \emph{\textbf{Expected}} & \emph{\textbf{Actual}} & \emph{\textbf{Accept}} & \emph{\textbf{Bug}} \\
+    \midrule
+    \texttt{1}
+    		& Open the app and stay on login page
+    		& The background to show up
+    		& OK, but takes some time
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Labels on top, password covered, form filled
+    		& Labels misplaced on first login, rest OK
+    		& Y
+    		& Label stays on textfield without focus on first login \\
+    \midrule
+    \texttt{2}
+    		& Login
+    		& Taken to product list
+    		& OK
+    		& Y
+    		& -- \\
+    \midrule
+    \texttt{3}
+    		& Products page examination
+    		& Reverse chronology of products
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Pull to refresh
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Only latest 20 at first
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Closed products at bottom
+    		& OK
+    		& Y
+    		& --\\
+    \midrule
+    \texttt{4}
+    		& Product card examination
+    		& Owner's avatar, name, date
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& user avatar goes to profile
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& item name, description, picture, options
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Offer buttons disabled or enabled appropriately
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Default picture
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Appropriate closed tag
+    		& OK
+    		& Y
+    		& --\\
+    \bottomrule
+    \end{tabularx}
+    \caption{GUI Testing after Sprint 5a}
+    \label{table:gui-test1}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+\centering
+    \begin{tabularx}{\textwidth}{cbbbcb}
+    \toprule
+    \centering
+    \emph{\textbf{\#}} & \emph{\textbf{Scene}} & \emph{\textbf{Expected}} & \emph{\textbf{Actual}} & \emph{\textbf{Accept}} & \emph{\textbf{Bug}} \\
+    \midrule
+    \texttt{5}
+    		& Side menu examination
+    		& Profile takes to own profile
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Categories takes to categories
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Request goes to offers
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Logout returns to login
+    		& OK
+    		& Y
+    		& --\\
+    	\midrule
+    	\texttt{6}
+    		& Add product button placement
+    		& Floats on bottom right
+    		& OK
+    		& Y
+    		& -- \\
+    	\midrule
+    	\texttt{7}
+    		& New Product examination
+    		& name required field
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Can't add product without name
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Description resizable
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Lend and sell toggle options
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Lend date from today
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Picture from gallery
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Picture from camera
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Multiple Category
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Clear category on cancel
+    		& Selection stays put
+    		& N
+    		& Scoped variable is not clearing\\
+    \bottomrule
+    \hline
+    \end{tabularx}
+    \caption{GUI Testing after Sprint 5b}
+    \label{table:table:gui-test2}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+\centering
+    \begin{tabularx}{\textwidth}{cbbbcb}
+    \toprule
+    \centering
+    \emph{\textbf{\#}} & \emph{\textbf{Scene}} & \emph{\textbf{Expected}} & \emph{\textbf{Actual}} & \emph{\textbf{Accept}} & \emph{\textbf{Bug}} \\
+    \midrule
+    \texttt{7}
+    		& New Product examination
+    		& Lend and Sell done correctly
+    		& Both selected always
+    		& N
+    		& Scoped variable not clearing on Lend \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Cancel closes modal
+    		& OK
+    		& Y
+    		& --\\
+    \midrule
+    \texttt{8}
+    		& Search bar examination
+    		& Correctly aligned, button disabled
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Typing removes products
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Cross clears field
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Message for failed search
+    		& OK
+    		& Y
+    		& --\\
+    	\midrule
+    	\texttt{9}
+    		& New Product
+    		& Added on top
+    		& OK
+    		& Y
+    		& Y \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& confirmation given
+    		& OK
+    		& Y
+    		& --\\
+    \midrule
+    \texttt{9}
+    		& Product page examination
+    		& Name, description, options, category
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Owner links to profile
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Offers iff for own item
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Picture slide viewable
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Navigable back
+    		& OK
+    		& Y
+    		& --\\
+    \midrule
+    \texttt{10}
+    		& Loading examination
+    		& Animation shown
+    		& OK
+    		& Y
+    		& -- \\
+    \bottomrule
+    \hline
+    \end{tabularx}
+    \caption{GUI Testing after Sprint 5c}
+    \label{table:table:gui-test3}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+\centering
+    \begin{tabularx}{\textwidth}{cbbbcb}
+    \toprule
+    \centering
+    \emph{\textbf{\#}} & \emph{\textbf{Scene}} & \emph{\textbf{Expected}} & \emph{\textbf{Actual}} & \emph{\textbf{Accept}} & \emph{\textbf{Bug}} \\
+    \midrule
+    \texttt{11}
+    		& Profile examination
+    		& Avatar, name displayed
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Rating count \& average
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Cannot rate own
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Cannot rate 0
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Can rate others
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Comments in a list
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Own products list
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Products deletable if own
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Products not deletable if others'
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Products link to product page
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Navigable back
+    		& OK
+    		& Y
+    		& --\\
+    \midrule
+    \texttt{12}
+    		& Requests examination
+    		& Recent requests first
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Older requests separate
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Request notification
+    		& Received most of the times
+    		& Y
+    		& GCM delivery unpredictable\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Options correctly enabled or disabled
+    		& OK
+    		& Y
+    		& --\\
+    \bottomrule
+    \hline
+    \end{tabularx}
+    \caption{GUI Testing after Sprint 5d}
+    \label{table:table:gui-test4}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+\centering
+    \begin{tabularx}{\textwidth}{cbbbcb}
+    \toprule
+    \centering
+    \emph{\textbf{\#}} & \emph{\textbf{Scene}} & \emph{\textbf{Expected}} & \emph{\textbf{Actual}} & \emph{\textbf{Accept}} & \emph{\textbf{Bug}} \\
+    \midrule
+    \texttt{13}
+    		& Requests examination
+    		& Product name links to product page
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Requester name and rating
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Request reason and date
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& No request message
+    		& OK
+    		& Y
+    		& --\\
+    	\midrule
+    \texttt{14}
+    		& Categories examination
+    		& Category buttons displayed
+    		& OK
+    		& Y
+    		& -- \\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Search header displayed
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Failed search message
+    		& OK
+    		& Y
+    		& --\\
+    		\cline{3-6} \noalign{\smallskip}
+    		&& Search results gives product cards
+    		& OK
+    		& Y
+    		& --\\
+    \bottomrule
+    \hline
+    \end{tabularx}
+    \caption{GUI Testing after Sprint 5e}
+    \label{table:table:gui-test5}
+\end{sidewaystable}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

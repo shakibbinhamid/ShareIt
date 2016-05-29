@@ -1,0 +1,87 @@
+\documentclass[12pt, twoside]{report}
+
+%% margins, paper size
+\usepackage[a4paper,width=150mm,left=35mm,right=35mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+
+%% set up the header and footer area
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{\leftmark}
+\fancyfoot{}
+
+%% no indentation for paragraphs
+\setlength{\parindent}{0pt}
+
+\usepackage[utf8]{inputenc}
+
+%% set the graphics path
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+%% for coloring hyperlinks and urls
+\usepackage[colorlinks]{hyperref}
+\usepackage{breakurl}
+
+%% for sub figure captions
+\usepackage{caption}
+\usepackage{subcaption}
+
+%% multiple column support
+\usepackage{multicol}
+
+%% to draw the uml diagrams
+\usepackage{tikz-uml}
+
+%% to use colors
+\usepackage{color}
+
+%% draws nice sideways tables
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[figuresright]{rotating}
+
+%% bibliography setup
+\bibliographystyle{plainurl}
+
+\begin{document}
+
+%% preambles
+\input{preambles/title}
+\input{preambles/abstract}
+\input{preambles/declaration}
+\input{preambles/acknowledgements}
+
+%% content list
+\tableofcontents
+\listoffigures
+\listoftables
+
+%% main body
+\input{chapters/introduction}
+\input{chapters/chapter_1}
+\input{chapters/chapter_2}
+\input{chapters/chapter_3}
+\input{chapters/chapter_4}
+\input{chapters/chapter_5}
+\input{chapters/chapter_6}
+\input{chapters/chapter_7}
+\input{chapters/chapter_8}
+\input{chapters/chapter_9}
+
+%% bibliography
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{references}
+
+%% appendix
+\appendix
+\input{appendices/appendix_a}
+\input{appendices/appendix_b}
+\input{appendices/appendix_c}
+\input{appendices/appendix_d}
+\input{appendices/appendix_e}
+\input{appendices/appendix_f}
+
+\end{document}

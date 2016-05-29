@@ -1,0 +1,177 @@
+\chapter{UX Results}
+\label{appendix:ux}
+
+\definecolor{agree}{RGB}{0, 122, 0}
+\definecolor{disagree}{RGB}{122, 0, 0}
+\definecolor{niceButWontCol}{RGB}{222, 222, 0}
+\definecolor{toughCol}{RGB}{222, 100, 0}
+\definecolor{fixableCol}{cmyk}{0, 0.208, 0.0429, 0.1412}
+
+\newcommand{\tab}{\vspace{0.5cm}}
+\newcommand{\username}[1]{\textsc{\textbf{#1}}}
+\newcommand{\user}[1]{\item[\username{#1}] \hfill}
+\newcommand{\agrees}[1]{\color{agree}\username{#1}\color{black}}
+\newcommand{\disagrees}[1]{\color{disagree}\username{#1}\color{black}}
+\newcommand{\fixable}[1]{\colorbox{fixableCol}{#1}}
+\newcommand{\tough}[1]{\colorbox{toughCol}{#1}}
+\newcommand{\cant}[1]{\colorbox{niceButWontCol}{#1}}
+
+\small
+\begin{center}
+	\fixable{fixable easy (1-2 hrs)} \tough{necessary but tough (\textgreater 10 hrs)} \cant{nice but cant}
+\end{center}
+\begin{itemize}
+	\item {You have just installed the app. You open it for the first time.
+		\begin{itemize}
+			\item What do you see?
+					\begin{itemize}
+						\item List of products \agrees{1}, \agrees{2} - ads, \agrees{4}, \agrees{5}
+						\item \fixable{Expected the products in reverse chronological order} \agrees{4}
+						\item Gray boxes. \agrees{3}
+						\item Details of products. \agrees{2}, \agrees{5}
+						\item Would rather not have a placeholder image for items without an image \agrees{1}, \disagrees{4} 	
+						\item Pictures are a bit small. \agrees{5}
+						\item Circle buttons on bottom were getting in the way. \agrees{1}, \agrees{2}, \disagrees{3}, \disagrees{5}
+						\item \tough{Expected to have a category section} \agrees{2}, \agrees{3}, \agrees{4}				
+						\vspace{0.5cm}
+						
+						\item GIF avatars of people \agrees{1}, \agrees{3}, \agrees{4}
+						\item \fixable{Expects clicking on the user avatar on product card to bring up the user profile} \agrees{1}
+						\item \fixable{Expected owner's name to be on the product card along with their avatars} \agrees{4}
+						\vspace{0.5cm}
+						
+						\item Can see a nice chat option \agrees{1} 
+						\item Borrow / buy is disabled means those options not available for the product \agrees{1} 
+						\item Good that can't borrow own things \agrees{1} 
+						\item Some items are closed seeing the red tag. \agrees{2}, \agrees{4}, \agrees{5}
+						\vspace{0.5cm}
+						
+						\item Search bar for finding products. \agrees{2}, \agrees{3}
+						\item Wasn't sure what the blue person icon meant. \agrees{4}
+						\item \cant{Expected to have a tutorial to explain the basic usage} \agrees{4}
+					\end{itemize}
+			\item What do you want to do now?
+				\begin{itemize}
+					\item Search for something. \agrees{3}, \agrees{1}
+					\item Click on a product. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}
+					\item Add a product. \agrees{1}, \agrees{5}
+				\end{itemize}
+		\end{itemize}
+		}
+		\tab
+	\item {
+		\begin{itemize}
+			\item Navigate back to the home page. (steps \& time)
+				\begin{itemize}
+					\item Everyone started looking about the app and made their way back to the home page. This task was trivial.
+					\item Navigation stack messed up in some order. Couldn't reproduce how they did it. \agrees{1}
+				\end{itemize} 
+			\item Try to find your profile. How else could you find your profile? (steps \& time)
+				\begin{itemize}
+					\item Everyone found the profiles before this question was asked. It was trivial.
+					\item From the icon on home. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+					\item From the menu on the top left. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+					\item From one of own products. \agrees{3}
+					\item Prefer the icon on home. \agrees{3}, \agrees{5}
+					\item Prefer the menu option. \agrees{1}, \agrees{2}
+					\vspace{0.5cm}
+					
+					\item Cannot change avatar. \agrees{1}
+					\item Liked the idea of rating. \agrees{1}, \agrees{4}, \agrees{5}
+					\item \fixable{Not sure if the comments are about the products, deals or person's own self}. \agrees{1}, \agrees{2}, \agrees{4}
+					\item \tough{\tiny{Not sure what the ratings represent, i.e. expected to see granular ratings e.g. timeliness 4, care of product 3 etc}} \agrees{1}, \agrees{2}
+					\item Good that can't rate oneself. \agrees{4}, \agrees{5}
+					\item Rated someone. \agrees{3}, \agrees{5}
+					\item Failed to rate someone. \agrees{1}
+				\end{itemize}
+		\end{itemize}
+		}
+		\tab
+	\item You want to post this 'x' on the community to sell, but you also don't mind lending it. What do you do? (steps \& time)
+		\begin{itemize}
+			\item Everyone followed the expected route, filled in the fields and clicked the green tick. Took less than two minutes.
+			\item Click on (+) on home page. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item Likes the use of toggle buttons for sell or lend options. \agrees{5}
+			\item Prefer to have types in defined categories. \agrees{3}, \agrees{4}
+			\item Relates types to tags. \agrees{4}
+			\item Easy to add and see the scrollable picture. \agrees{1}, \agrees{5}
+			\vspace{0.5cm}
+			\item \tough{\footnotesize{Noticed the lending bug - where things are always put on for sale and lending regardless of options}}
+			\item \fixable{Expected a confirmation} \agrees{4}
+			\item \fixable{Expected to be taken to the summary page} \agrees{5}
+			\item \fixable{Expected the product to be on top of the list} \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+		\end{itemize}
+		\tab	
+	\item You're looking for a used 'macbook' to buy. How will you find it? (steps \& time)
+		\begin{itemize}
+			\item Trivial to search for a product on the home page (less than 30 seconds). But not trivial to get out of the search.
+			\item \cant{Search doesn't work on types or wrongly spelt names etc}. \agrees{3}, \agrees{4}, \agrees{5}
+			\item \fixable{Expected to see a message or suggestions when no results for a search were found} \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}
+			\item Liked the cross to clear the search field. \agrees{3}, \agrees{4}, \agrees{5}
+		\end{itemize}
+		\tab
+	\item You've found a 'moto x'. You can use it for your project. How can you borrow it? (steps \& time) What do you think happens next?
+		\begin{itemize}
+			\item Trivial to borrow an item. Less than 30 seconds.
+			\item Click on borrow button if available. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item If not available to borrow, contact the user via chat. \agrees{3}
+			\item Expected to have the options on the product page too. \agrees{2}, \agrees{5}
+			\item Buyer gets notified. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item Item was reserved. \agrees{2}, \agrees{3}, \agrees{4}
+			\item Get in touch with the buyer and exchange. Then complete. \agrees{1}, \agrees{3}, \agrees{4}
+			\item Complete immediately. \agrees{2}, \agrees{5}
+			\item \cant{Products should be considered closed if both parties complete it} \agrees{4}
+		\end{itemize}
+		\tab
+	\item You want to find out more about the item or its seller. How? (steps \& time)
+		\begin{itemize}
+			\item Trivial. Found within 30 seconds. Comments about own profile applies here too.
+			\item Went to product details page, then owner name. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item \fixable{\footnotesize{Expected the closed items on a product to be marked on a profile page like on the cards}} \agrees{4}, \agrees{5}
+		\end{itemize}
+		\tab
+	\item How do you know if someone responded to the 'x' you posted earlier? Find such responses on the app. (steps \& time)
+		\begin{itemize}
+			\item The most difficult task here. Took quite a bit of looking around. More than 60 seconds.
+			\item Expected to get a notification (didn't always get sent a notification because of Google servers). \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item Found on product details page. \agrees{1}, \agrees{2}, \agrees{4}, \agrees{5}, \disagrees{3}
+			\item \tough{Expected to find separate place on profile for notifications about such things} \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item Expected to have a tab on the menu for notifications directly. \agrees{4}, \agrees{5}
+		\end{itemize}
+		\tab
+	\item You want to accept a request. How? What do you think happens when you accept?
+		\begin{itemize}
+			\item Trivial and took less than 30 seconds.
+			\item Click on accept button on an offer. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+			\item The other side gets notified. \agrees{1}, \agrees{2}, \agrees{3}, \agrees{4}, \agrees{5}
+		\end{itemize}
+		\tab
+	\item You want to decline a request. How? What do you think happens when you decline a request?
+		\begin{itemize}
+			\item Trivial. Similar to above.
+		\end{itemize} 
+		\tab 
+		
+	\item Note 2 points that could be 'improved' in the app.
+		\begin{itemize}
+			\item Add meaning to rating \agrees{1}
+			\item Improve the interaction with a failed search and make clearing a search better \agrees{1}
+			\vspace{0.5cm}
+			\item Make notifications clearer to find. \agrees{2}, \agrees{3}, \agrees{5}
+			\item Make scrolling better. \agrees{2}
+			\vspace{0.5cm}
+			\item Add categories for products. \agrees{3}
+			\item Separate tab in the menu for own products \agrees{5}
+			\vspace{0.5cm}
+			\item \fixable{Add time tag to comments}
+			\item Order of products in reverse chronological order.
+		\end{itemize}
+		\tab 
+	\item Note 2 points that the app does well.
+		\begin{itemize}
+			\item Product card layout is clean with three buttons for obvious actions. \agrees{1}, \agrees{3}
+			\item Intuitive and clean interface. \agrees{2}, \agrees{4}, \agrees{5}
+			\item Animations, loading, fluidity adds life to the app. \agrees{4}
+			\item Adding pictures of products is easy, necessary and done well. \agrees{1}
+		\end{itemize}		 
+\end{itemize}

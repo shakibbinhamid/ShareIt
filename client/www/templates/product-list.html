@@ -1,0 +1,74 @@
+<!-- |*****************************************************************************|
+     | Client : templates/product-list.html                                        |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the view of each product.                                           |
+     |*****************************************************************************| -->
+
+<!-- header bit, with the product and owner name, date -->
+<div class="row">
+    <!-- the owner's picture, that clicks to the profile page of the user -->
+    <a class="col col-20"
+       style="text-decoration: none;"
+       href="#/app/profile/{{product._owner.username}}">
+        <img src="{{ product._owner.avatar }}"
+             style="border-radius: 5px; max-height: 60px; max-width: 60px; background: #EEEEEE">
+    </a>
+    <!-- product's name, date posted upon -->
+    <a class="col col-80"
+       style="text-decoration: none;"
+       href="#/app/products/{{product._id}}">
+        <b>{{ product.name }}</b>
+        <!-- the tag if product closed -->
+        <span class="badge badge-assertive"
+              ng-if = "product.closed">
+              closed
+        </span>
+        <p ng-if="product.createdAt">{{product._owner.username}} Posted on {{ viewDate(product.createdAt) }}</p>
+    </a>
+</div>
+
+<!-- The body of the card. Product picture, description, offer options etc. -->
+<a class="row"
+   style="text-decoration: none;"
+   href="#/app/products/{{product._id}}">
+    <!-- picture of the product on left -->
+    <div class="col col-20">
+        <img ng-if="product.pictures.length > 0"
+             src="{{ product.pictures[0] }}"
+             style="max-height:100px; padding: 2px 2px 2px 2px;"
+             align="left">
+        <img ng-if="product.pictures.length === 0"
+             src="https://terryshoemaker.files.wordpress.com/2013/03/placeholder1.jpg"
+             style="max-height:100px; padding: 2px 2px 2px 2px;"
+             align="left">
+    </div>
+    <!-- the description and options on the right -->
+    <div class="col col-80">
+        <p> {{ product.desc }} </p>
+        <p ng-if="product._lend"><b>Lend</b> from {{ viewDate(product._lend.from) }} <span ng-if="product._lend.deposit">for £{{ product._lend.deposit }} deposit</span></p>
+        <p ng-if="product._sell"><b>Sell</b> for £{{ product._sell.price }}</p>
+    </div>
+</a>
+
+<!-- the request/offer buttons - borrow, buy or chat -->
+<div class="button-bar">
+    <button class="button button-energized button-clear button-small icon icon-left ion-arrow-swap"
+            ng-click="borrow(product)"
+            ng-disabled="!product._lend">
+        Borrow
+    </button>
+    <button class="button button-calm button-clear button-small icon icon-left ion-pricetags"
+            ng-click="buy(product)"
+            ng-disabled="!product._sell">
+        Buy
+    </button>
+    <!-- Not functional -->
+    <button class="button button-balanced button-clear button-small icon icon-left ion-android-chat"
+            ng-click="messageOwner()">
+        Chat
+    </button>
+</div>

@@ -1,0 +1,85 @@
+<!-- |*****************************************************************************|
+     | Client : templates/product.html                                             |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the detailed view of each product.                                  |
+     |*****************************************************************************| -->
+
+
+<ion-view view-title="Product">
+    <ion-content class = "product">
+        <!-- The details of a product -->
+        <ion-list class="card">
+            <!-- name -->
+            <label class="item item-input item-stacked-label">
+                <span class="input-label royal">Name</span>
+                <strong>
+                    {{ product.name }}
+                    <span class="badge badge-balanced"
+                          ng-if = "!product.closed && product._reservedTo">reserved</span>
+                    <span class="badge badge-assertive"
+                          ng-if = "product.closed">closed</span>
+                </strong>
+            </label>
+            <!-- owner -->
+            <label class="item item-input item-stacked-label">
+                <span class="input-label royal">Owner</span>
+                <!-- clickable button to the owner's profile -->
+                <button class="button button-small button-primary"
+                        ng-click="viewProfile(product._owner.username)">
+                    {{product._owner.username}}
+                </button>
+            </label>
+            <!-- type/category -->
+            <label class="item item-input item-stacked-label item-text-wrap">
+                <div class="input-label royal">Type</div>
+                <span>{{ product.type }}</span>
+            </label>
+            <!-- description -->
+            <label class="item item-input item-stacked-label item-text-wrap">
+                <div class="input-label royal">Description</div>
+                <p>{{product.desc}}</p>
+            </label>
+            <!-- lending option if available -->
+            <label class="item item-input item-stacked-label"
+                   ng-if="product._lend">
+                <div class="input-label royal">Available From</div>{{ viewDate(product._lend.from) }}
+            </label>
+            <!-- selling option if available -->
+            <label class="item item-input item-stacked-label"
+                   ng-if="product._sell">
+                <div class="input-label royal">Can buy for (£)</div>{{ product._sell.price }}
+            </label>
+            <!-- label only for pictures -->
+            <label class="item item-input item-stacked-label"
+                   ng-if="product.pictures.length > 0">
+                <span class="input-label royal">Pictures</span>
+            </label>
+        </ion-list>
+
+        <!-- The picture reel -->
+        <div class="test1"
+             ng-if="product.pictures.length > 0">
+                <ion-scroll direction="x">
+                    <img ng-repeat="image in product.pictures"
+                         ng-src="{{image}}"
+                         ng-click="showImages($index)"
+                         class="image-list-thumb" />
+                </ion-scroll>
+        </div>
+
+        <!-- The list of requests for this item -->
+        <ion-list class="card"
+                  ng-if="offers && offers.length > 0">
+            <label class="item item-input item-stacked-label">
+                <span class="input-label royal">Requests</span>
+            </label>
+            <div ng-repeat="offer in offers | orderBy: ['declined', 'createdAt']">
+                <ng-include src="'templates/request.html'"></ng-include>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>

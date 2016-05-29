@@ -1,0 +1,118 @@
+<!-- |*****************************************************************************|
+     | Client : templates/new-product.html                                         |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the search bar                                                      |
+     |*****************************************************************************| -->
+
+
+<div class="modal newProduct">
+    <!-- header -->
+    <header class="bar bar-header bar-royal">
+        <h1 class="title">New Product</h1>
+    </header>
+    <!-- main body -->
+    <ion-content class="has-header" has-bouncing="false">
+        <form name="newTaskForm">
+            <ion-list class="list card">
+                <!-- name -->
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label royal">What is it ?</span>
+                    <span ng-show="!newProduct.name || newProduct.name.length ===0"
+                          style="color:red">
+                          required
+                    </span>
+                    <input ng-model="newProduct.name"
+                           ng-required="true"
+                           placeholder="Product Name"
+                           pre-wrap;
+                           type="text"
+                           white-space:>
+                </label>
+                <!-- description -->
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label royal">Tell us something about it</span>
+                    <textarea msd-elastic="\n" ng-model="newProduct.desc" placeholder="Product Description"></textarea>
+                </label>
+                <!-- category select -->
+                <fancy-select
+                    header-text="Choose categories"
+                    allow-empty='true'
+                    value="val.categories"
+                    text="cateSelec"
+                    items="categories"
+                    multi-select="true">
+                </fancy-select>
+                <!-- lending option -->
+                <label class="item item-input item-stacked-label">
+                    <ion-toggle ng-model="lend"><div class="input-label royal">Lend ?</div></ion-toggle>
+                </label>
+                <!-- deposit -->
+                <label class="item item-input" ng-show="lend">
+                    <span class="input-label royal">Deposit (£)</span>
+                    <input ng-model="newProduct.lend.deposit"
+                           type="number"
+                           min="0">
+                </label>
+                <label class="item item-input"
+                       ng-show="lend">
+                    <span class="input-label royal">From</span>
+                    <button class="button button-small icon icon-left ion-android-calendar"
+                            ng-click="showDatepicker()">
+                        {{newProduct.lend.from.toDateString()}}
+                    </button>
+                </label>
+                <!-- selling option -->
+                <label class="item item-input item-stacked-label">
+                    <ion-toggle ng-model="sell"><div class="input-label royal">Sell ?</div></ion-toggle>
+                </label>
+                <label class="item item-input" ng-show="sell">
+                    <span class="input-label royal">Price (£)</span>
+                    <input ng-model="newProduct.sell.price"
+                           type="number"
+                           min="0">
+                </label>
+            </ion-list>
+            <!-- select picture upload options -->
+            <div class="list">
+                <div class="button-bar item item-input">
+                    <!-- camera -->
+                    <button class="button button-small icon icon-right ion-android-camera button-clear button-positive"
+                            ng-click="takePicture()">
+                            Take Picture
+                    </button>
+                    <!-- gallery -->
+                    <button class="button button-small icon icon-right ion-images button-clear button-positive"
+                            ng-click="selectPicture()">
+                            From Gallery
+                    </button>
+                </div>
+                <!-- the pictures that will be uploaded -->
+                <a class="item item-list-detail">
+                    <ion-scroll direction="x">
+                        <img ng-repeat="image in allImages"
+                             ng-src="{{image}}"
+                             ng-click="showImages($index)"
+                             class="image-list-thumb" />
+                    </ion-scroll>
+                </a>
+            </div>
+        </form>
+    </ion-content>
+    <!-- buttons for adding product or closing modal -->
+    <button class="button button-fab button-fab-bottom-left button-balanced pane icon ion-checkmark-round"
+            nav-view="active"
+            style="transform: translate3d(0%, 0px, 0px);"
+            ng-click="addProduct()"
+            ng-disabled="newTaskForm.$invalid">
+    </button>
+    <button class="button button-fab button-fab-bottom-right button-assertive pane icon ion-close-round"
+            nav-view="active"
+            style="transform: translate3d(0%, 0px, 0px);"
+            ng-click="closeNewProductModal()">
+    </button>
+
+</div>

@@ -1,0 +1,73 @@
+<!-- |*****************************************************************************|
+     | Client : templates/menu.html                                                         |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the slide-in menu bar.                                              |
+     | The main nav-view laoder code is also placed right here.                    |
+     |*****************************************************************************| -->
+
+<ion-side-menus enable-menu-with-back-views="false">
+
+    <!-- the content on the page with a side menu, i.e. homepage. -->
+    <ion-side-menu-content>
+        <!-- build the nav bar -->
+        <ion-nav-bar class="bar-calm-900">
+            <!-- keep a back button there when states change -->
+            <ion-nav-back-button></ion-nav-back-button>
+            <!-- otherwise a hamburger menu button is placed -->
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-android-menu"
+                        menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <!-- the actual content; to be filled in by ui-router -->
+        <ion-nav-view></ion-nav-view>
+    </ion-side-menu-content>
+
+    <!--SIDE MENU ITEMS-->
+    <ion-side-menu side="left">
+        <!--MENU HEADER-->
+        <ion-header-bar class="bar-calm-900">
+            <h1 class="title">Menu</h1>
+        </ion-header-bar>
+        <!--MENU ITEMS-->
+        <ion-content>
+            <ion-list>
+                <!-- products -->
+                <ion-item class="item-icon-left"
+                          ui-sref="app.products"
+                          menu-close>
+                    <a><i class="icon ion-android-list"></i>Products<a>
+                </ion-item>
+                <!-- categories -->
+                <ion-item class="item-icon-left"
+                          ng-click="viewCategories()"
+                          menu-close>
+                    <a><i class="icon ion-android-apps"></i>Categories<a>
+                </ion-item>
+                <!-- profile -->
+                <ion-item class="item-icon-left"
+                          ng-click="viewProfile()"
+                          menu-close>
+                    <a><i class="icon ion-android-person"></i>Profile</a>
+                </ion-item>
+                <!-- requests/offers -->
+                <ion-item class="item-icon-left"
+                          ng-click="viewRequests()"
+                          menu-close>
+                   <a><i class="icon ion-android-person-add"></i>Requests</a>
+                </ion-item>
+                <!-- logout -->
+                <ion-item class="item-icon-left"
+                          ng-click="logout()"
+                          menu-close>
+                   <a><i class="icon ion-log-out"></i>Logout</a>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,47 @@
+<!-- |*****************************************************************************|
+     | Client : templates/offers.html                                              |
+     |                                                                             |
+     | Email: shakib.bin.hamid@gmail.com                                           |
+     | version 0.0.1                                                               |
+     | Copyright Shakib-Bin Hamid                                                  |
+     |*****************************************************************************|
+     | This is the list of offers/requests                                         |
+     |*****************************************************************************| -->
+
+
+<ion-view view-title="Requests">
+    <ion-content  class = "product">
+        <!-- message for if there is nothing to show -->
+        <ion-list class="card"
+                  ng-if="offers && offers.length === 0"
+                  style="background: #eeeeee;">
+            <ion-item>
+                <p>You have no requests right now. Come back later :)</p>
+            </ion-item>
+        </ion-list>
+        <!-- the recently updated offers/requests -->
+        <div ng-if="recentOffers.length > 0"
+             class="item item-divider"
+             style = "color: #334d00">
+             Recently Updated
+        </div>
+        <ion-list class="card"
+                  ng-if="recentOffers.length > 0">
+            <div ng-repeat="offer in recentOffers | orderBy: ['declined', 'createdAt']">
+                <ng-include src="'templates/request.html'"></ng-include>
+            </div>
+        </ion-list>
+        <!-- those updated over a week ago -->
+        <div ng-if="restOffers.length > 0"
+             class="item item-divider"
+             style = "color: #334d00">
+                Updated More than a week ago
+        </div>
+        <ion-list class="card"
+                  ng-if="restOffers.length > 0">
+            <div ng-repeat="offer in restOffers | orderBy: ['declined', 'createdAt']">
+                <ng-include src="'templates/request.html'"></ng-include>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>
